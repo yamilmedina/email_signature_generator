@@ -42,29 +42,21 @@ class PreviewState extends State<PreviewContainer> {
         children: <Widget>[
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(formData.name, style: TextStyle(fontWeight: FontWeight.w800),)
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(formData.title, style: TextStyle(fontStyle: FontStyle.italic, color: Colors.black.withOpacity(0.7)),)
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(formData.division, style: TextStyle(color: Colors.black.withOpacity(0.7)),)
-          ),
-          Divider(),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(formData.email)
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(formData.phone)
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(formData.address, style: TextStyle(),)
-          ),
+            child: SelectableText.rich(
+              TextSpan(text: "\n",
+              children: <TextSpan>[
+                TextSpan(text: formData.name + "\n", style: TextStyle(fontWeight: FontWeight.w800)),
+                TextSpan(text: formData.title + "\n", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.black.withOpacity(0.7)),),
+                TextSpan(text: formData.division + "\n", style: TextStyle(color: Colors.black.withOpacity(0.7)),),
+                TextSpan(text: "\n", style: TextStyle(color: Colors.black.withOpacity(0.7)),),
+                TextSpan(text: formData.email + "\n", style: TextStyle(color: Colors.black.withOpacity(0.7)),),
+                TextSpan(text: formData.phone + "\n", style: TextStyle(color: Colors.black.withOpacity(0.7)),),  
+                TextSpan(text: formData.address + "\n", style: TextStyle(color: Colors.black.withOpacity(0.7)),),  
+                TextSpan(text: "\n", style: TextStyle(color: Colors.black.withOpacity(0.7)),),
+              ]
+              ),
+            )
+          ),  
           Align(
             alignment: Alignment.centerLeft,
             child: Image(
