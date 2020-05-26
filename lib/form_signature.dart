@@ -1,16 +1,20 @@
 
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SignatureForm extends StatefulWidget {
+  final StreamController streamController;  
+
+  SignatureForm({@required this.streamController});
+
   @override
-  State<StatefulWidget> createState() {
-    return SignatureFormState();
-  }
+  SignatureFormState createState() => SignatureFormState();
 
 }
 
-class SignatureFormState extends State {
+class SignatureFormState extends State<SignatureForm> {
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,8 +33,7 @@ class SignatureFormState extends State {
                 borderSide: BorderSide(color: Colors.redAccent),
               ),
             ),
-            onChanged: (value) {     },
-
+            onChanged: (value) { widget.streamController.sink.add(value); },
           ),
           TextFormField(
             decoration: InputDecoration(
@@ -64,5 +67,7 @@ class SignatureFormState extends State {
       ),
     );
   }
+
+  someMethod() {}
 
 }

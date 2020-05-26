@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 import 'preview_signature.dart';
 import 'form_signature.dart';
+import 'dart:async';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,8 +55,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final changeNotifier = new StreamController.broadcast();
 
+  @override
+  void dispose() {
+    changeNotifier.close();
+    super.dispose();
+  }
+
+  int _counter = 0;
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -77,10 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           ResponsiveGridCol(
             xl: 5,
-            child: new SignatureForm()),
+            child: new SignatureForm(streamController: changeNotifier)),
           ResponsiveGridCol(
             xl: 4,
-            child: new PreviewContainer())
+            child: new PreviewContainer(stream: changeNotifier.stream))
         ],
       )
     );
