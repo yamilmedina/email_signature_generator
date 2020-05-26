@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:email_signature_generator/form_data.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class PreviewContainer extends StatefulWidget {
 
@@ -17,13 +19,12 @@ class PreviewContainer extends StatefulWidget {
 
 class PreviewState extends State<PreviewContainer> {
   StreamSubscription streamSubscription;
-  String _name;
+  final FormData formData = FormData();
 
   @override
   initState() {
     super.initState();
-    _name = "Ronaldo Nazário";
-    streamSubscription = widget.stream.listen((message) => someMethod(message));
+    streamSubscription = widget.stream.listen((message) => updateStateOnEvent(message));
   }
 
   @override
@@ -35,19 +36,49 @@ class PreviewState extends State<PreviewContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       margin: const EdgeInsets.only(left: 20.0, right: 20.0),
       child: Column(
         children: <Widget>[
-      
-          Text(_name)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(formData.name, style: TextStyle(fontWeight: FontWeight.w800),)
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(formData.title, style: TextStyle(fontStyle: FontStyle.italic, color: Colors.black.withOpacity(0.7)),)
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(formData.division, style: TextStyle(color: Colors.black.withOpacity(0.7)),)
+          ),
+          Divider(),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(formData.email)
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(formData.phone)
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(formData.address, style: TextStyle(),)
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Image(
+            image: AssetImage('assets/images/transbank-logo.png'),
+            width: 250,)
+          ),
         ],
       ),
     );
   }
 
-  someMethod(message) {
+  updateStateOnEvent(message) {
     setState(() {
-      _name = message ?? "Ronaldo Nazário";
+      //triggering render onMessage received
     });
   }
 
