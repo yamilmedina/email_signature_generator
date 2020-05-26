@@ -1,20 +1,14 @@
 import 'package:flutter/cupertino.dart';
 
-class PreviewContainer extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return PreviewState();
-  }
+class PreviewContainer extends StatelessWidget {
 
-}
-
-class PreviewState extends State {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
+      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
       child: Column(
         children: <Widget>[
+      
           Text('Welcome to Flutter')
         ],
       ),

@@ -11,11 +11,10 @@ class SignatureForm extends StatefulWidget {
 }
 
 class SignatureFormState extends State {
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400, 
+      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
       child: Column(
           children: <Widget>[
           TextFormField(
@@ -29,7 +28,8 @@ class SignatureFormState extends State {
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.redAccent),
               ),
-            )
+            ),
+            onChanged: (value) {     },
 
           ),
           TextFormField(
@@ -64,4 +64,5 @@ class SignatureFormState extends State {
       ),
     );
   }
+
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_grid/responsive_grid.dart';
 import 'preview_signature.dart';
 import 'form_signature.dart';
 
@@ -72,12 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: new Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new SignatureForm(),
-          new PreviewContainer()
+      body: ResponsiveGridRow(
+        children: [
+          ResponsiveGridCol(
+            xl: 5,
+            child: new SignatureForm()),
+          ResponsiveGridCol(
+            xl: 4,
+            child: new PreviewContainer())
         ],
       )
     );
